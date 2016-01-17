@@ -3,6 +3,20 @@ from datetime import datetime
 from app import db
 
 
+class Team(db.Model):
+    __tablename__ = 'core_team'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    created_at = db.Column(db.DateTime)
+    created_by = db.Column(db.Integer)
+
+    def __init__(self, name, created_by):
+        self.name = name
+        self.created_by = created_by
+        self.created_at = datetime.now()
+
+
 class User(db.Model):
     __tablename__ = 'core_user'
 
@@ -27,3 +41,6 @@ class User(db.Model):
         self.created_by = 1
         self.updated_at = datetime.now()
         self.updated_by = 1
+
+
+

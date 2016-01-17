@@ -1,3 +1,3 @@
-from app import app
+from app import lq
 
-app.run()
+lq.run()
