@@ -1,13 +1,13 @@
 from flask import render_template, redirect, url_for, request
 
-from app.project.form import ProjectForm
-from app.project.models import Task
+from lequ.core.models import User
+from lequ.project.form import ProjectForm
 from . import bp
 
 
 @bp.route('/')
 def index():
-    pro = Task()
+    pro = User()
     return render_template("project/index.html")
 
 

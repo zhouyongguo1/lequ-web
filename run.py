@@ -1,3 +1,3 @@
-from app import lq
+from lequ import app
 
-lq.run()
+app.run()

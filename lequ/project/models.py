@@ -1,8 +1,8 @@
 from datetime import datetime
 from enum import unique, Enum
 
-from app import db
-from app.sqltype import Enum as myEnum
+from lequ import db
+from lequ.sqltype import Enum as myEnum
 
 
 @unique

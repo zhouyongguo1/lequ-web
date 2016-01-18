@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from app import db
+from lequ import db
 
 
 class Team(db.Model):
