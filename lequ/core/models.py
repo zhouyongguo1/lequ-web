@@ -41,6 +41,3 @@ class User(db.Model):
         self.created_by = 1
         self.updated_at = datetime.now()
         self.updated_by = 1
-
-
-

@@ -1,13 +1,12 @@
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, g
 
-from lequ.core.models import User
+from lequ import db
 from lequ.project.form import ProjectForm
 from . import bp
 
 
 @bp.route('/')
 def index():
-    pro = User()
     return render_template("project/index.html")
 
 
@@ -20,8 +19,13 @@ def add():
 def create():
     form = ProjectForm(request.form)
     if form.validate():
-        return redirect(url_for('add'))
-    return redirect('team/1/project/1/tasks')
+        project = form.to_project()
+        db.session.add(project)
+        db.session.commit()
+        url = '/team/%s/project/%d/tasks' % (g.teamId, project.id)
+        return redirect(url)
+    else:
+        return redirect(url_for('project.add'))
 
 
 @bp.route('/archived')
