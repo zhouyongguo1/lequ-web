@@ -31,13 +31,51 @@ class User(db.Model):
     updated_at = db.Column(db.DateTime)
     updated_by = db.Column(db.BigInteger)
 
-    def __init__(self):
-        self.name = 'name'
-        self.passWorld = 'pass'
-        self.email = 'email'
-        self.wechat = 'wechat'
-        self.phone = 'phone'
+    def __init__(self, name, passWorld, email, wechat, phone, owner_id):
+        self.name = name
+        self.passWorld = passWorld
+        self.email = email
+        self.wechat = wechat
+        self.phone = phone
         self.created_at = datetime.now()
-        self.created_by = 1
+        self.created_by = owner_id
         self.updated_at = datetime.now()
-        self.updated_by = 1
+        self.updated_by = owner_id
+
+
+class Role(db.Model):
+    __tablename__ = 'core_role'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    team_id = db.Column(db.Integer)
+    status = db.Column(db.Integer)
+
+    def __init__(self, name, team_id):
+        self.name = name
+        self.team_id = team_id
+        self.status = 1
+
+
+class UserTeam(db.Model):
+    __tablename__ = 'core_user_team'
+
+    id = db.Column(db.Integer, primary_key=True)
+    team_id = db.Column(db.Integer, db.ForeignKey('core_team.id'))
+    team = db.relationship('Team')
+    user_id = db.Column(db.Integer, db.ForeignKey('core_user.id'))
+    user = db.relationship('User')
+    role_id = db.Column(db.Integer, db.ForeignKey('core_role.id'))
+    role = db.relationship('Role')
+
+    is_owner = db.Column(db.Boolean)
+    created_at = db.Column(db.DateTime)
+    created_by = db.Column(db.Integer)
+
+    def __init__(self, team, user, role=None, is_owner=False, created_by=None):
+        self.team = team
+        self.user = user
+        self.role = role
+        self.is_owner = False
+        self.created_by = created_by
+        self.created_at = datetime.now()

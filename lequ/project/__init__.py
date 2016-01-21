@@ -18,3 +18,4 @@ def add_user_url_slug(endpoint, values):
 
 
 from . import views
+from . import taskviews

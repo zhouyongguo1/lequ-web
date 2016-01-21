@@ -23,6 +23,12 @@ def index():
     return render_template("home.html", user=user)
 
 
+@app.route('/teams')
+def teams():
+    user = User.query.filter_by(id=1).first()
+    return render_template("home.html", user=user)
+
+
 @app.route('/events')
 def events():
     return render_template("events.html")
