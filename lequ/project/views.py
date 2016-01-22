@@ -22,7 +22,7 @@ def create():
         project = form.to_project()
         db.session.add(project)
         db.session.commit()
-        url = '/team/%s/project/%d/tasks' % (g.teamId, project.id)
+        url = '/team/%s/project/%d/tasks' % (g.team_id, project.id)
         return redirect(url)
     else:
         return redirect(url_for('project.add'))

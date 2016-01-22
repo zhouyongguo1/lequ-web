@@ -22,7 +22,7 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    passWorld = db.Column('pass', db.String)
+    password = db.Column('pass', db.String)
     email = db.Column(db.String)
     wechat = db.Column(db.String)
     phone = db.Column(db.String)
@@ -31,9 +31,9 @@ class User(db.Model):
     updated_at = db.Column(db.DateTime)
     updated_by = db.Column(db.BigInteger)
 
-    def __init__(self, name, passWorld, email, wechat, phone, owner_id):
+    def __init__(self, name, password, email, wechat, phone, owner_id):
         self.name = name
-        self.passWorld = passWorld
+        self.password = password
         self.email = email
         self.wechat = wechat
         self.phone = phone
@@ -76,6 +76,6 @@ class UserTeam(db.Model):
         self.team = team
         self.user = user
         self.role = role
-        self.is_owner = False
+        self.is_owner = is_owner
         self.created_by = created_by
         self.created_at = datetime.now()

@@ -9,5 +9,5 @@ class ProjectForm(Form):
     name = StringField(validators=[DataRequired()])
 
     def to_project(self):
-        pro = Project(g.teamId, self.name.data)
+        pro = Project(g.team_id, self.name.data)
         return pro

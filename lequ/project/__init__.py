@@ -9,12 +9,12 @@ bp = Blueprint(
 
 @bp.url_value_preprocessor
 def get_profile_owner(endpoint, values):
-    g.teamId = values.pop('team_id')
+    g.team_id = values.pop('team_id')
 
 
 @bp.url_defaults
 def add_user_url_slug(endpoint, values):
-    values.setdefault('team_id', g.teamId)
+    values.setdefault('team_id', g.team_id)
 
 
 from . import views
