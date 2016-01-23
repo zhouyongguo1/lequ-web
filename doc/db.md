@@ -12,7 +12,7 @@ work_ 工作流表单表的前缀
 * core_event 事件
 * core_invite 用户邀请
 
-## 项目表,前缀 core_
+## 项目表,前缀 pro_
 * pro_project 项目
 * pro_tag 项目标签定义
 * pro_user 项目用户
