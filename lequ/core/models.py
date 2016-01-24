@@ -1,23 +1,11 @@
 from datetime import datetime
 
+from flask.ext.login import UserMixin
+
 from lequ import db
 
 
-class Team(db.Model):
-    __tablename__ = 'core_team'
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    created_at = db.Column(db.DateTime)
-    created_by = db.Column(db.Integer)
-
-    def __init__(self, name, created_by):
-        self.name = name
-        self.created_by = created_by
-        self.created_at = datetime.now()
-
-
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'core_user'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -41,6 +29,29 @@ class User(db.Model):
         self.created_by = owner_id
         self.updated_at = datetime.now()
         self.updated_by = owner_id
+
+    # def password(self, password):
+    #     self.password = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return True
+        # return self.password == password
+
+        # return check_password_hash(self.password, password)
+
+
+class Team(db.Model):
+    __tablename__ = 'core_team'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    created_at = db.Column(db.DateTime)
+    created_by = db.Column(db.Integer)
+
+    def __init__(self, name, created_by):
+        self.name = name
+        self.created_by = created_by
+        self.created_at = datetime.now()
 
 
 class Role(db.Model):

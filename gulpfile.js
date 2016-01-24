@@ -8,7 +8,7 @@ var uglify = require('gulp-uglify')
 var sourcemaps = require('gulp-sourcemaps');
 
 var src_dir = 'assets/';
-var build_dir = 'app/static/';
+var build_dir = 'lequ/static/';
 function src(rel_path) {
     return src_dir + rel_path;
 }

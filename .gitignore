@@ -5,7 +5,7 @@ dist
 build
 
 node_modules
-app/static
+lequ/static
 
 *.log
 *.svg

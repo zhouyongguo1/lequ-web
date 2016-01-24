@@ -1,4 +1,5 @@
 from flask import render_template
+from flask.ext.login import login_required
 
 from lequ import db, app
 from lequ.core.models import User
@@ -17,6 +18,7 @@ def internal_error(error):
 
 @app.route('/')
 @app.route('/index')
+@login_required
 def index():
     user = User.query.filter_by(id=1).first()
 
