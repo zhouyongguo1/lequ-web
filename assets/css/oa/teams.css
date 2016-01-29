@@ -5,7 +5,9 @@ body {
     color: #444;
     background-color: #6f5499;
 }
-
+.btn {
+    border-radius: 0;
+}
 .form-control {
     border-radius: 0px;
     box-shadow: none;

@@ -67,6 +67,9 @@ gulp.task('common-js', function () {
 gulp.task('vendor-js', function () {
     return gulp.src([
         src('js/vendor/jquery.min.js'),
+        src('js/vendor/parsley/parsley.js'),
+        src('js/vendor/parsley/parsley.remote.js'),
+        src('js/vendor/parsley/zh_cn.js'),
         src('js/vendor/bootstrap.min.js')
     ]).pipe(sourcemaps.init())
         .pipe(concat('vendor.js'))
