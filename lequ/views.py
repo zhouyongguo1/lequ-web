@@ -21,14 +21,13 @@ def internal_error(error):
 @login_required
 def index():
     user = User.query.filter_by(id=1).first()
-
     return render_template("home.html", user=user)
 
 
 @app.route('/teams')
 def teams():
     user = User.query.filter_by(id=1).first()
-    return render_template("home.html", user=user)
+    return render_template("teams.html", user=user)
 
 
 @app.route('/events')

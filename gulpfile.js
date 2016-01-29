@@ -39,8 +39,13 @@ gulp.task('themes-css', function () {
         .pipe(minifyCSS())
         .pipe(gulp.dest(build('css/themes')));
 });
+gulp.task('oa-css', function () {
+    return gulp.src(src('css/oa/*.css'))
+        .pipe(minifyCSS())
+        .pipe(gulp.dest(build('css/oa')));
+});
 
-gulp.task('css', ['vendor-css', 'common-css', 'themes-css']);
+gulp.task('css', ['vendor-css', 'common-css', 'oa-css', 'themes-css']);
 gulp.task('images', function () {
     return gulp.src(src('images/**'))
         .pipe(gulp.dest(build('images')))

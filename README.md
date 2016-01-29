@@ -44,6 +44,10 @@
 ### Run
     $ workon lequ
     $ python run.py
+    
+    
+### chat
+    https://gitter.im/zhouyongguo1/lequ-web
 
 
 
