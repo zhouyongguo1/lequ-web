@@ -1,0 +1,15 @@
+<script>
+    $(function () {
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+{%if category=='error' %}
+jQuery.message.error("{{message}}");
+{% else %}
+jQuery.message.success("{{message}}");
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+         });
+</script>

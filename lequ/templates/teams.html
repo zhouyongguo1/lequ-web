@@ -7,6 +7,7 @@
     <link href="/static/css/oa/teams.css" rel="stylesheet">
 </head>
 <body>
+
 <header class="navbar navbar-static-top" role="banner">
     <div class="container">
 
@@ -18,7 +19,7 @@
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i>zhouyongguo <span class="caret"></span>
+                        <i class="fa fa-user fa-fw"></i>{{g.user.name}} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -42,54 +43,20 @@
 <div class="container">
     <div class="mod">
         <div class="mod-header">
-            <h4>团队列表</h4>
+            <h4>团队管理</h4>
         </div>
         <div class="main-body">
             <div class="teams">
                 <ul>
+                    {% for item in user_teams %}
                     <li>
-                        <a class="" href="prorun.html">
-                            江西软件开发团队
-                        </a>
-                        <em>
-                            <small class="text-muted"> 4人</small>
-                        </em>
+                        <a class="" href="/team/{{ item.team.id }}">{{ item.team.name }}</a>
+                        <!--<span class="pull-right work">-->
+                        <!--<a>修改</a>-->
+                        <!--<a>删除</a>-->
+                        <!--</span>-->
                     </li>
-                    <li>
-                        <a class="" href="prorun.html">
-                            宏远建筑项目团队
-                        </a>
-            <span class="pull-right work">
-              <a>修改</a>
-              <a>删除</a>
-            </span>
-                    </li>
-                    <li class="active">
-                        <a class="" href="prorun.html">
-                            天气APP项目
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="prorun.html">
-                            宏远建筑项目
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="prorun.html">
-                            宏远建筑项目
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="prorun.html">
-                            <i class="fa fa-simplybuilt "></i>
-                            天气APP项目
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="prorun.html">
-                            宏远建筑项目
-                        </a>
-                    </li>
+                    {% endfor %}
                     <li class="add" data-toggle="modal" data-target="#myModal">
                         <a class="" href="#">
                             <i class="fa fa-plus"></i>
@@ -109,17 +76,21 @@
                             aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">新建团队</h4>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group row">
-                        <div class="col-sm-7">
-                            <input type="text" class="form-control col-sm-4" placeholder="项目名称">
+                <form action="/teams/new" method="POST" data-parsley-validate="">
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control col-sm-4" name="name"
+                                       placeholder="团队名称" required="" maxlength="50">
+                            </div>
                         </div>
+
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-success">创建团队</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-success">创建团队</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -131,5 +102,11 @@
 </footer>
 <script src="/static/js/vendor.js"></script>
 <script src="/static/js/common.js"></script>
+<script>
+    $(function () {
+        $('form').parsley();
+    });
+</script>
+{% include"/message.html" %}
 </body>
 </html>

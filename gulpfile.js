@@ -70,7 +70,8 @@ gulp.task('vendor-js', function () {
         src('js/vendor/parsley/parsley.js'),
         src('js/vendor/parsley/parsley.remote.js'),
         src('js/vendor/parsley/zh_cn.js'),
-        src('js/vendor/bootstrap.min.js')
+        src('js/vendor/bootstrap.min.js'),
+        src('js/vendor/jquery.bootstrap-growl.js')
     ]).pipe(sourcemaps.init())
         .pipe(concat('vendor.js'))
         .pipe(uglify())
