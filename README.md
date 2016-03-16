@@ -1,5 +1,7 @@
 ## Prerequisites
 
+[![Join the chat at https://gitter.im/zhouyongguo1/lequ-web](https://badges.gitter.im/zhouyongguo1/lequ-web.svg)](https://gitter.im/zhouyongguo1/lequ-web?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 * Python 3.4 or higher
 * Python virtualenv
 * node 0.10
